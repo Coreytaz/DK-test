@@ -1,5 +1,7 @@
-import { Heading, Box, useColorModeValue, Image, Link, Text } from '@chakra-ui/react'
+import { ArrowBackIcon } from '@chakra-ui/icons'
+import { Heading, Box, useColorModeValue, Image, Link, Text, Button } from '@chakra-ui/react'
 import Head from 'next/head'
+import router from 'next/router'
 
 export default function Page() {
     return (
@@ -10,7 +12,17 @@ export default function Page() {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <main>
+                <Button
+                    variant="ghost"
+                    leftIcon={<ArrowBackIcon />}
+                    fontWeight={800}
+                    color="green.500"
+                    onClick={() => router.replace('/')}
+                >
+                    Back
+                </Button>
                 <Heading
+                    mt="5"
                     color="green.500"
                     as="h2"
                     textTransform="uppercase"
