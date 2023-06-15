@@ -10,6 +10,7 @@ interface CardProps extends HTMLAttributes<HTMLDivElement> {
 export const Card: FC<CardProps> = ({ blog, ...props }) => {
     return (
         <Box
+            _active={{ transform: 'scale(0.98)' }}
             as="article"
             cursor="pointer"
             transition="all 0.2s linear"
