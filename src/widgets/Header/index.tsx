@@ -9,6 +9,7 @@ import {
     Container,
 } from '@chakra-ui/react'
 import { MoonIcon, SunIcon } from '@chakra-ui/icons'
+import Link from 'next/link'
 
 export const Header = () => {
     const { colorMode, toggleColorMode } = useColorMode()
@@ -18,14 +19,16 @@ export const Header = () => {
                 <Container maxW="6xl">
                     <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
                         <Box>
-                            <Text
-                                bgGradient="linear(to-l, #7928CA, #FF0080)"
-                                bgClip="text"
-                                fontSize="2xl"
-                                fontWeight="extrabold"
-                            >
-                                DK-test
-                            </Text>
+                            <Link href="/">
+                                <Text
+                                    bgGradient="linear(to-l, #7928CA, #FF0080)"
+                                    bgClip="text"
+                                    fontSize="2xl"
+                                    fontWeight="extrabold"
+                                >
+                                    DK-test
+                                </Text>
+                            </Link>
                         </Box>
 
                         <Flex alignItems={'center'}>
