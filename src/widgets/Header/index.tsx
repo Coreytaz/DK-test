@@ -7,10 +7,11 @@ import {
     useColorMode,
     Text,
     Container,
+    Link,
 } from '@chakra-ui/react'
 import { MoonIcon, SunIcon } from '@chakra-ui/icons'
-import Link from 'next/link'
 import { CreateBlog } from '../CreateBlog'
+import router from 'next/router'
 
 export const Header = () => {
     const { colorMode, toggleColorMode } = useColorMode()
@@ -20,7 +21,7 @@ export const Header = () => {
                 <Container maxW="6xl">
                     <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
                         <Box>
-                            <Link href="/">
+                            <Link onClick={() => router.push('/')}>
                                 <Text
                                     bgGradient="linear(to-l, #7928CA, #FF0080)"
                                     bgClip="text"

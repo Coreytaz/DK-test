@@ -13,7 +13,7 @@ export const Blogs = observer(() => {
     const router = useRouter()
 
     useEffect(() => {
-        autorun(() => {
+        return autorun(() => {
             store.fetchBlogs()
             store.setTotalPage()
         })
@@ -23,14 +23,14 @@ export const Blogs = observer(() => {
         return <ErrorBlogs />
     }
 
-    if (store.status === 'loading' || store.status === 'init') {
+    if (store.status === 'loading' || store.status === 'init' || store.blogs === null) {
         return <SkeletonBlogs />
     }
 
     return (
         <Flex mt="5" gap="5" justifyContent="center" flexWrap="wrap">
-            {store.blogs.length > 0 ? (
-                store.blogs.map((blog, i) => (
+            {store.blogs?.length! > 0 ? (
+                store?.blogs?.map((blog, i) => (
                     <CardBlog
                         key={blog.id}
                         onClick={() => router.push(`/blog/${blog.id}`)}

@@ -6,7 +6,7 @@ export class BlogsStore {
     page: number = 1
     limit: number = 10
     totalPage: number = 0
-    blogs: BlogsItem[] = []
+    blogs: BlogsItem[] | null = null
     status: 'init' | 'loading' | 'success' | 'error' = 'init'
 
     constructor() {
@@ -21,15 +21,17 @@ export class BlogsStore {
     }
 
     setTotalPage = async () => {
-        const length = await getAllBlogsLength()
-        const totalPage = Math.ceil(length / this.limit)
-        runInAction(() => {
-            this.totalPage = totalPage
-        })
+        try {
+            const length = await getAllBlogsLength()
+            runInAction(() => {
+                this.totalPage = Math.ceil(length / this.limit)
+            })
+        } catch (error) {}
     }
+
     fetchBlogs = async (limit: number = this.limit, page: number = this.page) => {
-        this.blogs = []
         this.status = 'loading'
+        this.blogs = null
         try {
             const blogs = await getBlogs(limit, page)
             runInAction(() => {
