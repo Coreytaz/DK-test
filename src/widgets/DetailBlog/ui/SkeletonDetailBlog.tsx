@@ -24,7 +24,7 @@ export const SkeletonDetailBlog: FC = () => {
                         marginLeft={{ base: '0', sm: '5%' }}
                         marginTop="5%"
                     >
-                        <Skeleton width={460} height={460} />
+                        <Skeleton w={{ base: '100%', sm: '85%' }} height={{ base: 260, sm: 460 }} />
                     </Box>
                 </Box>
                 <Box

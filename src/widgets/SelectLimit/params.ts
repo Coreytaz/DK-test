@@ -1,6 +1,7 @@
 import { useBlogsStore } from '@/entities/Card'
 import { useSearchParam } from '@/shared/hook/useQueryParam'
 import { autorun } from 'mobx'
+import router from 'next/router'
 import { useEffect, useState } from 'react'
 
 export const useLimit = () => {
@@ -19,10 +20,10 @@ export const useLimit = () => {
     const handleLimitChange = (limit: number) => {
         setSearchParam(limit.toString())
         setLimit(limit)
-        autorun(() => {
-            store.setTotalPage()
-            store.setPage(1)
-        })
+        router.query.page = '1'
+        router.query.limit = limit.toString()
+        router.push(router)
+        store.setPage(1)
     }
 
     return { limit, handleLimitChange }

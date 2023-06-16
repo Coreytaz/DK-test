@@ -1,5 +1,5 @@
 import { Stack, Text } from '@chakra-ui/react'
-import React, { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { PaginationItem } from './PaginationItem'
 import { usePagination } from '../params'
 import { useBlogsStore } from '@/entities/Card'
@@ -20,10 +20,6 @@ export const Pagination = observer(() => {
             return index + currentPage + 1
         }
     }).filter(Number)
-
-    useEffect(() => {
-        store.setTotalPage()
-    }, [store])
 
     return (
         <Stack direction="row" mt="8" justify="flex-end" align="center" spacing="6">

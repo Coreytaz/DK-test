@@ -2,8 +2,9 @@ import { Select } from '@chakra-ui/react'
 import { FC } from 'react'
 import { useLimit } from './params'
 import { observer } from 'mobx-react-lite'
+import { useBlogsStore } from '@/entities/Card'
 
-export const SelectLimit: FC = () => {
+export const SelectLimit: FC = observer(() => {
     const { limit, handleLimitChange } = useLimit()
     return (
         <Select
@@ -17,4 +18,4 @@ export const SelectLimit: FC = () => {
             <option value="20">Take 20</option>
         </Select>
     )
-}
+})

@@ -41,6 +41,7 @@ export const DetailBlog: FC<DetailBlogProps> = observer(({ ...props }) => {
                     mt="5"
                     color="green.500"
                     as="h2"
+                    size={{ base: 'md', sm: 'lg' }}
                     textTransform="uppercase"
                     fontWeight={800}
                     letterSpacing={1.1}
