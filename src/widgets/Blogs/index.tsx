@@ -23,8 +23,8 @@ export const Blogs = observer(() => {
         return <ErrorBlogs />
     }
 
-    if (store.status === 'loading' || store.status === 'init' || store.blogs === null) {
-        return <SkeletonBlogs />
+    if (store.status === 'loading' || store.status === 'init') {
+        return <SkeletonBlogs isLoading={!(store.status === 'loading')} />
     }
 
     return (
