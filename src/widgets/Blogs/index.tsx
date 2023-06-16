@@ -12,7 +12,9 @@ export const Blogs = observer(() => {
     const router = useRouter()
 
     useEffect(() => {
-        store.fetchBlogs()
+        autorun(() => {
+            store.fetchBlogs()
+        })
     }, [store])
 
     if (store.status === 'error') {

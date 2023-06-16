@@ -18,9 +18,6 @@ export const usePagination = () => {
     const handlePageChange = (pageNumber: number) => {
         setSearchParam(pageNumber.toString())
         setCurrentPage(pageNumber)
-        autorun(() => {
-            store.fetchBlogs()
-        })
     }
 
     return { currentPage, handlePageChange }

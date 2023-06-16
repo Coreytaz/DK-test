@@ -21,7 +21,6 @@ export const useLimit = () => {
         setLimit(limit)
         autorun(() => {
             store.setTotalPage()
-            store.fetchBlogs()
             store.setPage(1)
         })
     }
