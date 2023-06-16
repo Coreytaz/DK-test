@@ -10,6 +10,7 @@ import {
 } from '@chakra-ui/react'
 import { MoonIcon, SunIcon } from '@chakra-ui/icons'
 import Link from 'next/link'
+import { CreateBlog } from '../CreateBlog'
 
 export const Header = () => {
     const { colorMode, toggleColorMode } = useColorMode()
@@ -33,6 +34,7 @@ export const Header = () => {
 
                         <Flex alignItems={'center'}>
                             <Stack direction={'row'} spacing={7}>
+                                <CreateBlog />
                                 <Button onClick={toggleColorMode}>
                                     {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
                                 </Button>

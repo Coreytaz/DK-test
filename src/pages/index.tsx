@@ -1,6 +1,8 @@
-import { StoreBlogsProvider, blogStore } from '@/entities/Card'
+import { StoreBlogsProvider, blogsStore } from '@/entities/Card'
 import { Blogs } from '@/widgets/Blogs'
-import { Heading } from '@chakra-ui/react'
+import { Pagination } from '@/widgets/Pagination/ui'
+import { SelectLimit } from '@/widgets/SelectLimit'
+import { Flex, Heading } from '@chakra-ui/react'
 import Head from 'next/head'
 
 export default function Home() {
@@ -22,8 +24,12 @@ export default function Home() {
                 >
                     Blog List
                 </Heading>
-                <StoreBlogsProvider store={blogStore}>
+                <StoreBlogsProvider store={blogsStore}>
+                    <SelectLimit />
                     <Blogs />
+                    <Flex m="5" gap="5" justifyContent="center" flexWrap="wrap">
+                        <Pagination />
+                    </Flex>
                 </StoreBlogsProvider>
             </main>
         </>

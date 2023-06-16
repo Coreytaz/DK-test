@@ -1,8 +1,11 @@
 import { makeAutoObservable, runInAction } from 'mobx'
 import { BlogsItem, FlowReturn } from './types'
-import { getBlogs } from '../api'
+import { getAllBlogsLength, getBlogs } from '../api'
 
-export class BlogStore {
+export class BlogsStore {
+    page: number = 1
+    limit: number = 10
+    totalPage: number = 0
     blogs: BlogsItem[] = []
     status: 'init' | 'loading' | 'success' | 'error' = 'init'
 
@@ -10,11 +13,25 @@ export class BlogStore {
         makeAutoObservable(this)
     }
 
-    async fetchBlogs() {
+    setPage = (page: number) => {
+        this.page = page
+    }
+    setLimit = (limit: number) => {
+        this.limit = limit
+    }
+
+    setTotalPage = async () => {
+        const length = await getAllBlogsLength()
+        const totalPage = Math.ceil(length / this.limit)
+        runInAction(() => {
+            this.totalPage = totalPage
+        })
+    }
+    fetchBlogs = async (limit: number = this.limit, page: number = this.page) => {
         this.blogs = []
         this.status = 'loading'
         try {
-            const blogs = await getBlogs()
+            const blogs = await getBlogs(limit, page)
             runInAction(() => {
                 this.blogs = blogs
                 this.status = 'success'
@@ -27,4 +44,4 @@ export class BlogStore {
     }
 }
 
-export const blogStore = new BlogStore()
+export const blogsStore = new BlogsStore()

@@ -3,7 +3,7 @@ import { routes } from './routes'
 import axios, { AxiosResponse } from 'axios'
 import { ApiBlogsData, ApiUsersData } from './types'
 
-export const getBlogs = async (limit: number = 10, page: number = 1) => {
+export const getBlogs = async (limit: number, page: number) => {
     const posts = await api.get<any, AxiosResponse<ApiBlogsData[]>>(routes.getBlogsData(), {
         params: {
             _limit: limit,
@@ -17,10 +17,15 @@ export const getBlogs = async (limit: number = 10, page: number = 1) => {
         const newUsers = response[1].data as ApiUsersData[]
 
         const newData = newPosts.map((post) => {
+            const img = `https://loremflickr.com/1280/1280?random=${post.id}`
             const user = newUsers.find((user) => user.id === post.userId)
-            return { ...post, user }
+            return { ...post, user, img }
         })
 
         return newData
     })
+}
+
+export const getAllBlogsLength = async () => {
+    return (await api.get<any, AxiosResponse<ApiBlogsData[]>>(routes.getBlogsData())).data.length
 }

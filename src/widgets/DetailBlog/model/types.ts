@@ -6,7 +6,7 @@ export type FlowReturn<AsyncFunction extends (...args: any[]) => Promise<any>> =
     Awaited<ReturnType<AsyncFunction>>
 >
 
-export interface BlogsItem extends Omit<ApiBlogsData, 'userId'> {
+export interface BlogItem extends Omit<ApiBlogsData, 'userId'> {
     user?: ApiUsersData
     img: string
 }

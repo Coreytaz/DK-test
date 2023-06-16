@@ -1,5 +1,4 @@
-import { Box, Heading, Text, Stack, useColorModeValue } from '@chakra-ui/react'
-import Image from 'next/image'
+import { Box, Heading, Text, Stack, useColorModeValue, Skeleton, Image } from '@chakra-ui/react'
 import { FC, HTMLAttributes } from 'react'
 import { BlogsItem } from '../model/types'
 
@@ -26,10 +25,9 @@ export const Card: FC<CardProps> = ({ blog, ...props }) => {
         >
             <Box bg="gray.100" mt={-6} mx={-6} mb={6} pos="relative">
                 <Image
-                    src={`https://loremflickr.com/1280/1280?random=${blog.id}`}
-                    width={1280}
-                    height={1280}
-                    alt=""
+                    src={blog?.img}
+                    alt={blog.title}
+                    fallback={<Skeleton width={{ base: '100%' }} height={{ base: 260, md: 360 }} />}
                 />
             </Box>
             <Stack>
