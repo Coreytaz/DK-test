@@ -45,6 +45,7 @@ export const CreateBlog = () => {
                 duration: 5000,
                 isClosable: true,
             })
+            onClose()
             console.log(res)
         } catch (error) {
             toast({
