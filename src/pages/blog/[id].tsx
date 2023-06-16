@@ -12,7 +12,7 @@ export default function Page() {
                     leftIcon={<ArrowBackIcon />}
                     fontWeight={800}
                     color="green.500"
-                    onClick={() => router.replace('/')}
+                    onClick={() => router.back()}
                 >
                     Back
                 </Button>
